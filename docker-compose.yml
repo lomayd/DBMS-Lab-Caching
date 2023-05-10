@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  # redis 사용 방법:
+  # docker exec -it redis bash
+  # redis-cli
+  # auth {redis_password}
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass {redis_password} --port 6379
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: LAB
+      MYSQL_ROOT_USERNAME: root
+      MYSQL_ROOT_PASSWORD:
